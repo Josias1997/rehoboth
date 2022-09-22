@@ -5,7 +5,6 @@ use App\Models\Product;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Http\RedirectResponse;
 use Cart;
 
 class ShopComponent extends Component
