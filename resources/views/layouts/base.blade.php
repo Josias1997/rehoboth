@@ -94,6 +94,9 @@
 													<li class="menu-item" >
 														<a title="Manage Sales" href="{{ route('admin.sales') }}">Manage Sales</a>
 													</li>
+                                                    <li class="menu-item" >
+                                                        <a title="Manage Coupons" href="{{ route('admin.coupons') }}">Manage Coupons</a>
+                                                    </li>
 													<form id="logout-form" method="Post" action="{{ route('logout') }}">
 														@csrf
 														<li class="menu-item">
@@ -176,13 +179,13 @@
 									<a href="about-us.html" class="link-term mercado-item-title">About Us</a>
 								</li>
 								<li class="menu-item">
-									<a href="/shop" class="link-term mercado-item-title">Shop</a>
+									<a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
 								</li>
 								<li class="menu-item">
-									<a href="/cart" class="link-term mercado-item-title">Cart</a>
+									<a href="{{ route('cart') }}" class="link-term mercado-item-title">Cart</a>
 								</li>
 								<li class="menu-item">
-									<a href="/checkout" class="link-term mercado-item-title">Checkout</a>
+									<a href="{{ route('checkout') }}" class="link-term mercado-item-title">Checkout</a>
 								</li>
 								<li class="menu-item">
 									<a href="contact-us.html" class="link-term mercado-item-title">Contact Us</a>

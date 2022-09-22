@@ -34,32 +34,19 @@ use App\Http\Livewire\WishlistComponent;
 |
 */
 
-Route::get('/', HomeComponent::class);
-Route::get('/shop', ShopComponent::class);
-Route::get('/cart', CartComponent::class)->name('product.cart');
-Route::get('/checkout', CheckoutComponent::class);
+Route::get('/', HomeComponent::class)->name('home');
+Route::get('/shop', ShopComponent::class)->name('shop');;
+Route::get('/cart', CartComponent::class)->name('cart');
+Route::get('/checkout', CheckoutComponent::class)->name('checkout');
+Route::get('/search', SearchComponent::class)->name('search');
+Route::get('/wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
-Route::get('/search', SearchComponent::class)->name('product.search');
-Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
-// For User or Customer
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function() {
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
 });
 
-// For Admin
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'authadmin'])->group(function() {
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
@@ -75,5 +62,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
     Route::get('/admin/sales', AdminSaleComponent::class)->name('admin.sales');
+
+    Route::get('/admin/coupons', \App\Http\Livewire\Admin\AdminCouponsComponent::class)->name('admin.coupons');
+    Route::get('/admin/coupons/add', \App\Http\Livewire\Admin\AdminAddCouponComponent::class)->name('admin.coupons.add');
+    Route::get('/admin/coupons/edit/{id}', \App\Http\Livewire\Admin\AdminEditCouponComponent::class)->name('admin.coupons.edit');
 });
 

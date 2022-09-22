@@ -4,7 +4,7 @@
 
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="/" class="link">home</a></li>
+                <li class="item-link"><a href="{{ route('home') }}" class="link">home</a></li>
                 <li class="item-link"><span>Digital & Electronics</span></li>
             </ul>
         </div>
@@ -55,7 +55,7 @@
                 </div><!--end wrap shop control-->
 
                 <div class="row">
-                    @if ($products->count() > 0) 
+                    @if ($products->count() > 0)
                         <ul class="product-list grid-products equal-container">
                             @foreach ($products as $product)
                                 <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
@@ -71,13 +71,13 @@
                                             <a href="" class="btn add-to-cart" wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Add To Cart</a>
                                         </div>
                                     </div>
-                                </li> 
+                                </li>
                             @endforeach
-                        </ul>  
+                        </ul>
                     @else
                         <p style="padding-top: 30px;">No Products</p>
                     @endif
-                        
+
                 </div>
 
                 <div class="wrap-pagination-info">
@@ -100,7 +100,7 @@
                             @foreach ($categories as $category)
                                 <li class="category-item">
                                     <a href="{{ route('product.category', ['category_slug' => $category->slug]) }}" class="cate-link">{{ $category->name }}</a>
-                                </li>   
+                                </li>
                             @endforeach
                         </ul>
                     </div>

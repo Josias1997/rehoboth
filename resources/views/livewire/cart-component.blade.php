@@ -76,9 +76,9 @@
                 <h4 class="title-box" style="border-bottom: 1px solid; padding-bottom: 15px;">
                     {{ Cart::instance('saveForLater')->count()}} item(s) saved for later
                 </h4>
-                @if (Session::has('success_message'))
+                @if (Session::has('s_success_message'))
                     <div class="alert alert-success">
-                        <strong>Success</strong> {{ Session::get('success_message') }}
+                        <strong>Success</strong> {{ Session::get('s_success_message') }}
                     </div>
                 @endif
                 @if (Cart::instance('saveForLater')->count() > 0)
