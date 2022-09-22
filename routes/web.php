@@ -2,7 +2,6 @@
 
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
-use App\Http\Livewire\Admin\AdminAddHomeSliderConponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +21,7 @@ use App\Http\Livewire\Admin\AdminSaleComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\WishlistComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +41,7 @@ Route::get('/checkout', CheckoutComponent::class);
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/search', SearchComponent::class)->name('product.search');
+Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
 
 // Route::middleware([
 //     'auth:sanctum',
