@@ -24,8 +24,8 @@ class AdminEditCategoryComponent extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'name' => 'required', 
-            'slug' => 'required|unique:categories'
+            'name' => 'required',
+            'slug' => 'required'
         ]);
     }
 
@@ -36,8 +36,8 @@ class AdminEditCategoryComponent extends Component
     public function updateCategory()
     {
         $this->validate(([
-            'name' => 'required', 
-            'slug' => 'required|unique:categories'
+            'name' => 'required',
+            'slug' => 'required'
         ]));
         $category = Category::find($this->category_id);
         $category->name = $this->name;
