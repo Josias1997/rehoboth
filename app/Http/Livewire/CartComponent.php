@@ -28,7 +28,7 @@ class CartComponent extends Component
         ]);
     }
 
-    public function calculateDiscount() {
+    public function calculateDiscounts() {
         if(session()->has('coupon')) {
             if(session()->get('coupon')['type'] == 'fixed') {
                 $this->discount = session()->get('coupon')['value'];
@@ -36,7 +36,13 @@ class CartComponent extends Component
                 $this->discount = (Cart::instance('cart')->subtotal() * session()->get('coupon')['value']) / 100;
             }
             $this->subtotalAfterDiscount = Cart::instance('cart')->subtotal() - $this->discount;
+            $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax')) / 100;
+            $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
         }
+    }
+
+    public function removeCoupon() {
+        session()->forget('coupon');
     }
 
     public function increaseQuantity($rowId) {
@@ -85,6 +91,14 @@ class CartComponent extends Component
     }
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
+        if(session()->has('coupon')) {
+            if (Cart::instance('cart')->subtotal() < session()->get('coupon')['cart_value']) {
+                session()->forget('coupon');
+            }
+            else {
+                $this->calculateDiscounts();
+            }
+        }
         return view('livewire.cart-component')->layout('layouts.base');
     }
 }
